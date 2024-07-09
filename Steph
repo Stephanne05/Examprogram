@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class ExamResults {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            displayMenu();
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    viewCourseworkResults();
+                    break;
+                case 2:
+                    viewExamResults(calculateTotalScore());
+                    break;
+                case 3:
+                    System.out.println("Exiting program...");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 3);
+    }
+
+    private static void displayMenu() {
+        System.out.println("\nMenu:");
+        System.out.println("1. View coursework results");
+        System.out.println("2. View exam results");
+        System.out.println("3. Exit");
+        System.out.print("Enter your choice: ");
+    }
+
+    private static void viewCourseworkResults() {
+        // Implement logic to display coursework results (8, 6, 11, 7, 8)
+        System.out.println("**40**");
+    }
+
+    private static void viewExamResults(double totalScore) {
+        if (totalScore >= 50) {
+            System.out.println("Congratulations! You passed the course.");
+        } else {
+            System.out.println("Unfortunately, you failed the course.");
+        }
+        System.out.println("Total Score: " + totalScore);
+    }
+
+    private static double calculateTotalScore() {
+        int numAssessments = countCourseworkAssessments();
+        double courseworkScore = 0;
+
+        // Replace with logic to get individual assessment scores (ass1, ass2, ass3, cat1, cat2)
+        System.out.println("**Coursework Scores**");
+
+        // Calculate coursework score (assuming equal weight for each assessment)
+        courseworkScore = (numAssessments * 100) / 5;
+
+        double finalExamScore;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your final exam score (out of 100): ");
+        finalExamScore = scanner.nextDouble();
+
+        return (courseworkScore / 2) + finalExamScore;
+    }
+
+    private static int countCourseworkAssessments() {
+        int numAssessments = 0;
+
+        // Simulate checking for completed assessments (replace with actual logic)
+        for (int i = 1; i <= 5; i++) {
+            if (Math.random() > 0.5) { // Simulate completed assessment
+                numAssessments++;
+            }
+        }
+
+        return numAssessments;
+    }
+}
